@@ -1,25 +1,22 @@
 import { Navigate, Route, Routes } from "react-router";
 import { ROUTES } from "../constants/routes";
-
-const Home = () => {
-  return <div>Home</div>;
-};
+import MainLayout from "../layouts/mainLayout";
+import { lazy } from "react";
 
 const Login = () => {
   return <div>Login</div>;
 };
 
-const Dashboard = () => {
-  return <div>Dashboard</div>;
-};
+const DashboardComponent = lazy(() => import("@/domains/dashboard"));
 
 function AppRoutes() {
   return (
     <Routes>
-      <Route path={ROUTES.HOME} element={<Home />} />
       <Route path={ROUTES.LOGIN} element={<Login />} />
-      <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
-      <Route path="*" element={<Navigate to={ROUTES.HOME} replace />} />
+      <Route path={ROUTES.HOME} element={<MainLayout />}>
+        <Route path={ROUTES.DASHBOARD} element={<DashboardComponent />} />
+        <Route path="*" element={<Navigate to={ROUTES.HOME} replace />} />
+      </Route>
     </Routes>
   );
 }
