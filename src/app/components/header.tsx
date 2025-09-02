@@ -1,5 +1,5 @@
-import { ModeToggle } from "@/shared/components/mode-toggle";
-import { SidebarTrigger } from "@/shared/components/ui/sidebar";
+import { ModeToggle } from "@components/mode-toggle";
+import { SidebarTrigger } from "@components/ui/sidebar";
 
 function Header() {
   return (

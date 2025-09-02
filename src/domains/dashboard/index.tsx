@@ -1,10 +1,9 @@
-import { Button } from "@/shared/components/ui/button";
+import { RenphoImportPage } from "./RenphoImportPage";
 
 function Dashboard() {
   return (
     <div>
-      <h1>Hello World</h1>
-      <Button>Click me</Button>
+        <RenphoImportPage />
     </div>
   );
 }
