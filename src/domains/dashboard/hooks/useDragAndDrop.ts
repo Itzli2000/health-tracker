@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import type { DragEvent, ChangeEvent } from 'react';
 
 interface DragAndDropOptions {
   onFileDrop: (file: File) => void;
@@ -55,7 +56,7 @@ export const useDragAndDrop = ({
   /**
    * Handle drag enter event
    */
-  const handleDragEnter = useCallback((e: DragEvent) => {
+  const handleDragEnter = useCallback((e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
     setDragCounter(prev => prev + 1);
@@ -65,7 +66,7 @@ export const useDragAndDrop = ({
   /**
    * Handle drag leave event
    */
-  const handleDragLeave = useCallback((e: DragEvent) => {
+  const handleDragLeave = useCallback((e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
     setDragCounter(prev => prev - 1);
@@ -80,7 +81,7 @@ export const useDragAndDrop = ({
   /**
    * Handle drag over event
    */
-  const handleDragOver = useCallback((e: DragEvent) => {
+  const handleDragOver = useCallback((e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
   }, []);
@@ -88,7 +89,7 @@ export const useDragAndDrop = ({
   /**
    * Handle drop event
    */
-  const handleDrop = useCallback((e: DragEvent) => {
+  const handleDrop = useCallback((e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
     
@@ -114,8 +115,8 @@ export const useDragAndDrop = ({
   /**
    * Handle programmatic file selection
    */
-  const handleFileSelect = useCallback((e: Event) => {
-    const target = e.target as HTMLInputElement;
+  const handleFileSelect = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const target = e.target;
     const file = target.files?.[0];
     
     if (!file) return;

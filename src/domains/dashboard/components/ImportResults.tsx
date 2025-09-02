@@ -4,7 +4,7 @@ import { CheckCircle, ExternalLink } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@components/ui/card';
 import { Button } from '@components/ui/button';
 import { Alert, AlertDescription } from '@components/ui/alert';
-import type { ImportResult, TransformedMeasurement } from '../types/renpho-import.types';
+import type { ImportResult } from '../types/renpho-import.types';
 
 interface ImportResultsProps {
   result: ImportResult;

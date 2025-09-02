@@ -1,8 +1,13 @@
-import React from 'react';
-import { AlertTriangle, RefreshCw } from 'lucide-react';
+import React from "react";
+import { AlertTriangle, RefreshCw } from "lucide-react";
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card';
-import { Button } from '@/shared/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/shared/components/ui/card";
+import { Button } from "@/shared/components/ui/button";
 
 interface ImportErrorBoundaryState {
   hasError: boolean;
@@ -31,8 +36,8 @@ export class ImportErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error('Import Error Boundary caught an error:', error, errorInfo);
-    
+    console.error("Import Error Boundary caught an error:", error, errorInfo);
+
     // You can also log the error to an error reporting service here
     // errorReportingService.captureException(error, { extra: errorInfo });
   }
@@ -45,10 +50,17 @@ export class ImportErrorBoundary extends React.Component<
     if (this.state.hasError) {
       if (this.props.fallback) {
         const Fallback = this.props.fallback;
-        return <Fallback error={this.state.error} resetError={this.resetError} />;
+        return (
+          <Fallback error={this.state.error} resetError={this.resetError} />
+        );
       }
 
-      return <DefaultErrorFallback error={this.state.error} resetError={this.resetError} />;
+      return (
+        <DefaultErrorFallback
+          error={this.state.error}
+          resetError={this.resetError}
+        />
+      );
     }
 
     return this.props.children;
@@ -58,10 +70,11 @@ export class ImportErrorBoundary extends React.Component<
 /**
  * Default error fallback component
  */
-const DefaultErrorFallback: React.FC<{ error?: Error; resetError: () => void }> = ({
-  error,
-  resetError,
-}) => {
+// eslint-disable-next-line react-refresh/only-export-components
+const DefaultErrorFallback: React.FC<{
+  error?: Error;
+  resetError: () => void;
+}> = ({ error, resetError }) => {
   return (
     <Card className="border-red-200 dark:border-red-800">
       <CardHeader>
@@ -75,11 +88,13 @@ const DefaultErrorFallback: React.FC<{ error?: Error; resetError: () => void }> 
           <h4 className="font-medium text-red-800 dark:text-red-200 mb-2">
             Something went wrong during the import process
           </h4>
-          
+
           {error && (
             <div className="text-sm text-red-700 dark:text-red-300 space-y-2">
-              <p><strong>Error:</strong> {error.message}</p>
-              {process.env.NODE_ENV === 'development' && (
+              <p>
+                <strong>Error:</strong> {error.message}
+              </p>
+              {process.env.NODE_ENV === "development" && (
                 <details className="mt-2">
                   <summary className="cursor-pointer font-medium">
                     Technical Details (Development Mode)
@@ -110,9 +125,9 @@ const DefaultErrorFallback: React.FC<{ error?: Error; resetError: () => void }> 
             <RefreshCw className="w-4 h-4 mr-2" />
             Try Again
           </Button>
-          <Button 
-            variant="outline" 
-            onClick={() => window.location.reload()} 
+          <Button
+            variant="outline"
+            onClick={() => window.location.reload()}
             className="flex-1"
           >
             Refresh Page

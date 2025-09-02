@@ -6,7 +6,7 @@ import { TrendingUp, Activity } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@components/ui/card';
 import { Button } from '@components/ui/button';
 import type { ImportStrategy } from '../types/renpho-import.types';
-import { importSettingsSchema, type ImportSettingsFormData } from '../types/renpho-import.types';
+import { importSettingsSchema } from '../types/renpho-import.types';
 
 interface StrategySelectorProps {
   currentStrategy: ImportStrategy;
@@ -48,7 +48,7 @@ export const StrategySelector: React.FC<StrategySelectorProps> = ({
     }
   }, [watchedStrategy, currentStrategy, onStrategyChange]);
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: unknown) => {
     console.log('Import settings:', data);
     onImport();
   };
