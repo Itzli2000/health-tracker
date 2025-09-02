@@ -1,5 +1,5 @@
-import { ThemeProvider } from "@/components/theme-provider";
-import { ModeToggle } from "@/components/mode-toggle";
+import { ThemeProvider } from "@/app/providers/theme-provider";
+import { ModeToggle } from "@components/mode-toggle";
 import { Button } from "@components/ui/button";
 import { BrowserRouter } from "react-router";
 import "./App.css";
